@@ -18,7 +18,7 @@ namespace TcmbWepApi.Controllers
             var result = httpClient.GetAsync(url).Result;
 
             var stream = result.Content.ReadAsStreamAsync().Result;
-
+            
             var itemXml = XElement.Load(stream); 
             Tarih_Date tarih_Date;
             XmlSerializer serializer = new XmlSerializer(typeof(Tarih_Date));
@@ -26,8 +26,8 @@ namespace TcmbWepApi.Controllers
             {
                 tarih_Date = (Tarih_Date)serializer.Deserialize(reader);
             }
-
-
+           
+           
 
             return Ok(tarih_Date);
         }
